@@ -1,0 +1,44 @@
+const express=require("express");
+const authorsRouter=express.Router();
+function router(nav){
+    var authors=[{
+        title:"William Shakespeare",
+        img:"imge1.jpg",
+        about:'William Shakespeare (bapt. 26 April 1564 – 23 April 1616)[a] was an English playwright, poet, and actor, widely regarded as the greatest writer in the English language and the worlds greatest dramatist.He is often called Englands national poet and the "Bard of Avon" (or simply "the Bard").[5][b] His extant works, including collaborations, consist of some 39 plays,[c] 154 sonnets, three long narrative poems, and a few other verses, some of uncertain authorship. His plays have been translated into every major living language and are performed more often than those of any other playwright.They also continue to be studied and reinterpreted.Shakespeare was born and raised in Stratford-upon-Avon, Warwickshire. At the age of 18, he married Anne Hathaway, with whom he had three children: Susanna and twins Hamnet and Judith. Sometime between 1585 and 1592, he began a successful career in London as an actor, writer, and part-owner of a playing company called the Lord Chamberlains Men, later known as the Kings Men. At age 49 (around 1613), he appears to have retired to Stratford, where he died three years later. Few records of Shakespeares private life survive; this has stimulated considerable speculation about such matters as his physical appearance, his sexuality, his religious beliefs, and whether the works attributed to him were written by others.Shakespeare produced most of his known works between 1589 and 1613. His early plays were primarily comedies and histories and are regarded as some of the best work produced in these genres. He then wrote mainly tragedies until 1608, among them Hamlet, Romeo and Juliet, Othello, King Lear, and Macbeth, all considered to be among the finest works in the English language.[2][3][4] In the last phase of his life, he wrote tragicomedies (also known as romances) and collaborated with other playwrights.Many of Shakespeares plays were published in editions of varying quality and accuracy in his lifetime. However, in 1623, two fellow actors and friends of Shakespeares, John Heminges and Henry Condell, published a more definitive text known as the First Folio, a posthumous collected edition of Shakespeares dramatic works that included all but two of his plays. The volume was prefaced with a poem by Ben Jonson, in which Jonson presciently hailed Shakespeare in a now-famous quote as "not of an age, but for all time"'
+    },{
+    title:"Emily Elizabeth Dickinson",
+    img:"imge2.jpg",
+    about:"Emily Elizabeth Dickinson (December 10, 1830 – May 15, 1886) was an American poet. Little-known during her life, she has since been regarded as one of the most important figures in American poetry.Dickinson was born in Amherst, Massachusetts into a prominent family with strong ties to its community. After studying at the Amherst Academy for seven years in her youth, she briefly attended the Mount Holyoke Female Seminary before returning to her family's house in Amherst.Evidence suggests that Dickinson lived much of her life in isolation. Considered an eccentric by locals, she developed a penchant for white clothing and was known for her reluctance to greet guests or, later in life, to even leave her bedroom. Dickinson never married, and most friendships between her and others depended entirely upon correspondence.While Dickinson was a prolific writer, her only publications during her lifetime were 10 of her nearly 1,800 poems, and one letter.[4] The poems published then were usually edited significantly to fit conventional poetic rules. Her poems were unique for her era. They contain short lines, typically lack titles, and often use slant rhyme as well as unconventional capitalization and punctuation.[5] Many of her poems deal with themes of death and immortality, two recurring topics in letters to her friends, and also explore aesthetics, society, nature and spirituality"
+    },{
+      title:"Howard Phillips Lovecraft",
+    img:"imge3.jpg",
+    about:"Howard Phillips Lovecraft (August 20, 1890 – March 15, 1937) was an American writer of weird and horror fiction, who is known for his creation of what became known as the Cthulhu Mythos.Born in Providence, Rhode Island, Lovecraft spent most of his life in New England. He was born into affluence, but his family's wealth dissipated soon after the death of his grandfather. In 1913, he wrote a critical letter to a pulp magazine that ultimately led to his involvement in pulp fiction. During the interwar period, he wrote and published stories that focused on his interpretation of humanity's place in the universe. In his view, humanity was an unimportant part of an uncaring cosmos that could be swept away at any moment. These stories also included fantastic elements that represented the perceived fragility of anthropocentrism. Lovecraft joined the small Kalem Club of writers when he first moved to New York, and would later be the center of a wider body of authors known as the Lovecraft Circle.This group wrote stories that frequently shared details among them. He was also a prolific letter writer. He maintained a correspondence with several different authors and literary proteges. According to some estimates, he wrote approximately 100,000 letters over the course of his life.[n 2] In these letters, he discussed his worldview and his daily life, and tutored younger authors, such as August Derleth, Donald Wandrei, and Robert Bloch."
+    },{
+      title:"Arthur Conan Doyle",
+    img:"imge4.jpg",
+    about:"Sir Arthur Ignatius Conan Doyle KStJ DL (22 May 1859 – 7 July 1930) was a British writer and physician. He created the character Sherlock Holmes in 1887 for A Study in Scarlet, the first of four novels and fifty-six short stories about Holmes and Dr. Watson. The Sherlock Holmes stories are considered milestones in the field of crime fiction.Doyle was a prolific writer; other than Holmes stories, his works include fantasy and science fiction stories about Professor Challenger and humorous stories about the Napoleonic soldier Brigadier Gerard, as well as plays, romances, poetry, non-fiction and historical novels. One of Doyle's early short stories,J. Habakuk Jephson's Statement (1884), helped to popularise the mystery of the Mary Celeste.Doyle is often referred to as Sir Arthur Conan Doyle or Conan Doyle, implying that Conan is part of a compound surname rather than a middle name. His baptism entry in the register of St Mary's Cathedral, Edinburgh, gives Arthur Ignatius Conan as his given names and Doyle as his surname. It also names Michael Conan as his godfather.[1] The catalogues of the British Library and the Library of Congress treat Doyle alone as his surname.Steven Doyle, editor of The Baker Street Journal, wrote: Conan was Arthur's middle name. Shortly after he graduated from high school he began using Conan as a sort of surname. But technically his last name is simply 'Doyle'. When knighted, he was gazetted as Doyle, not under the compound Conan Doyle."
+    },{
+      title:"Lev Nikolayevich Tolstoy",
+    img:"imge5.jpg",
+    about:"Lev Nikolayevich Tolstoy Russian: tr. Lev Nikoláyevich Tolstóy,(About this soundlisten); 9 September, [O.S. 28 August] 1828 – 20 November, [O.S. 7 November] 1910), usually referred to in English as Leo Tolstoy, was a Russian writer who is regarded as one of the greatest authors of all time.[3] He received nominations for the Nobel Prize in Literature every year from 1902 to 1906 and for the Nobel Peace Prize in 1901, 1902, and 1909. That he never won is a major controversy.Born to an aristocratic Russian family in 1828,[3] Tolstoy is best known for the novels War and Peace (1869) and Anna Karenina (1878),[8] often cited as pinnacles of realist fiction.[3] He first achieved literary acclaim in his twenties with his semi-autobiographical trilogy, Childhood, Boyhood, and Youth (1852–1856), and Sevastopol Sketches (1855), based upon his experiences in the Crimean War. His fiction includes dozens of short stories and several novellas such as The Death of Ivan Ilyich (1886), Family Happiness (1859), and Hadji Murad (1912). He also wrote plays and numerous philosophical essays."
+    }]
+    
+    authorsRouter.get("/",function(req,res){
+        res.render("authors",{
+              nav,
+              title:"Authors",
+            authors});
+      });
+      authorsRouter.get("/:iid",function(req,res){
+           const iid= req.params.iid
+             res.render("author",{
+              nav,
+              title:"Library",
+            author:authors[iid]
+             });
+      });
+
+      return authorsRouter;
+}
+
+  module.exports=router;
