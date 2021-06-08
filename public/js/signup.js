@@ -1,18 +1,21 @@
 let email = document.getElementById("email");
 let pwd= document.getElementById("pass");
 let add = document.getElementById("add");
-let city = document.getElementById("city");
+let phonenumber = document.getElementById("phonenumber");
 let state = document.getElementById("state");
 let pass1 = document.getElementById("pass1");
 
 function ion(){
     let regemail = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3})?$/;
     let decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,15}$/;
-    if(email.value==""||pwd.value==""||add.value==""||city.value==""||state.value==""){
+    let regphone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if(email.value==""||pwd.value==""||add.value==""||state.value==""||phonenumber.value==""){
         alert("cannot be empty");
         return false;
+    
     }
-    else if(regemail.test(email.value)&&decimal.test(pwd.value)){
+    else if(regemail.test(email.value)&&decimal.test(pwd.value)&&regphone.test(phonenumber.value)){
+        alert("Account Added Successfully")
         return true;
     }
     else{

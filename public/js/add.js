@@ -1,11 +1,12 @@
 let namee = document.getElementById("name");
 let author= document.getElementById("author");
+let genre= document.getElementById("genre");
 let about = document.getElementById("about");
 let name1 = document.getElementById("name1");
 let about1 = document.getElementById("about1");
 
 function vali(){
-    if(namee.value==""||author.value==""||about.value==""){
+    if(namee.value==""||author.value==""||about.value==""||genre.value==""){
         alert("cannot be empty");
         return false;
     }
@@ -24,3 +25,7 @@ function vali1(){
         return true;
     }
 }
+function delet(){
+    alert("Update/Delete");
+}
+

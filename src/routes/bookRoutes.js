@@ -1,47 +1,82 @@
 const express=require("express");
 const booksRouter=express.Router();
+var multer= require('multer');
+var x="";
+var storage = multer.diskStorage({
+      destination: function (req, file, cb) {
+        cb(null, 'public/img')
+      },
+      filename: function (req, file, cb) {
+       x=file.originalname;
+        cb(null, file.originalname)
+      }
+  })
+  var upload = multer({ storage: storage })
+
+const Bookdata=require("../model/Bookdata");
 function router(nav){
-    var books=[{
-        title:"The History of Tom Jones, a Foundling",
-        author:"Henry Fielding",
-        img:"img1.png",
-        about:"The book opens with the narrator stating that the purpose of the novel will be to explore human nature.The kindly and wealthy Squire Allworthy and his sister Bridget are introduced in their wealthy estate in Somerset. Allworthy returns from London after an extended business trip and finds an abandoned baby sleeping in his bed. He summons his housekeeper, Mrs Deborah Wilkins, to take care of the child. After searching the nearby village Mrs Wilkins is told about a young woman called Jenny Jones, a servant of a schoolmaster and his wife, as the most likely person to have committed the deed. Jenny is brought before the Allworthys and admits being the baby's mother, but she refuses to reveal the father's identity. Mr Allworthy mercifully removes Jenny to a place where her reputation will be unknown and tells his sister to raise the boy, whom he names Thomas, in his household.Two brothers, Dr Blifil and Captain Blifil, regularly visit the Allworthy estate. The doctor introduces the captain to Bridget in the hope of marrying into Allworthy's wealth. The couple soon marries. After the marriage, Captain Blifil begins to show a coldness to his brother, who eventually feels obliged to leave the house for London. He does, and, soon after, he dies of a broken heart. Captain Blifil and his wife start to grow cool towards one another, and the former is found dead from apoplexy one evening after taking his customary evening stroll before dinner. By then, he has fathered a boy who grows up with the bastard Tom. Captain Blifil's son, known as Master Blifil, is a miserable and jealous boy who conspires against Tom."
-        },{
-    title:"Pride and Prejudice",
-    author:"Jane Austen",
-    img:"img2.jpg",
-    about:"The novel is set in rural England in the early 19th century. Mrs. Bennet attempts to persuade Mr. Bennet to visit Mr. Bingley, a rich bachelor recently arrived in the neighbourhood. After some verbal sparring with her husband, Mrs. Bennet believes he will not call on Mr. Bingley. Shortly afterwards, he visits Netherfield, Mr. Bingley's rented residence, much to Mrs. Bennet's delight. The visit is followed by an invitation to a ball at the local assembly rooms that the entire neighbourhood will attend.At the ball, we are first introduced to the whole Netherfield party, which consists of Mr. Bingley, his two sisters, the husband of one of his sisters, and Mr. Darcy, his dearest friend. Mr. Bingley's friendly and cheerful manner earns him popularity among the guests. He appears attracted to Jane Bennet (the Bennets' eldest daughter), with whom he dances twice. Mr. Darcy, reputed to be twice as wealthy, is haughty and aloof, causing a decided dislike of him. He declines to dance with Elizabeth (the Bennets' second-eldest daughter), stating that she is not attractive enough to tempt him.[4] Elizabeth finds this amusing and jokes about it with her friends.Mr. Bingley's sisters, Caroline and Louisa, later invite Jane to Netherfield for dinner. On her way there, Jane is caught in a rain shower and develops a bad cold, forcing her to stay at Netherfield to recuperate, much to Mrs. Bennet's delight. When Elizabeth goes to see Jane, Mr. Darcy finds himself getting attracted to Elizabeth , while Miss Bingley grows jealous, as she herself has designs on Mr. Darcy. Elizabeth herself is indifferent and unaware of his developing interest in her."
-  },{
-      title:"The Red and the Black",
-      author:"Stendhal",
-      img:"img3.jpg",
-      about:"Le Rouge et le Noir is the Bildungsroman of Julien Sorel, the intelligent and ambitious protagonist. He comes from a poor family[1] and fails to understand much about the ways of the world he sets out to conquer. He harbours many romantic illusions, but becomes mostly a pawn in the political machinations of the ruthless and influential people about him. The adventures of the hero satirize early 19th-century French society, accusing the aristocracy and Catholic clergy of being hypocritical and materialistic, foretelling the radical changes that will soon depose them from their leading roles in French society.The first volume's epigraph, La vérité, l'âpre vérité (The truth, the harsh truth), is attributed to Danton, but like most of the chapters' epigraphs it is actually fictional. The first chapter of each volume repeats the title Le Rouge et le Noir and the subtitle Chronique de 1830. The title refers to the contrasting uniforms of the army and the church. Early in the story, Julien Sorel realistically observes that under the Bourbon Restoration it is impossible for a man of his plebeian social class to distinguish himself in the army (as he might have done under Napoleon), hence only a church career offers social advancement and glory. In complete editions, the first book (Livre premier, ending after Chapter XXX) concludes with the quotation To the Happy Few from The Vicar of Wakefield by Oliver Goldsmith, parts of which Stendhal had memorized in the course of teaching himself English. In The Vicar, the happy few read the title character's obscure and pedantic treatise on monogamy—alone."
-    },{
-        title:"David Copperfield",
-        author:"Charles Dickens",
-        img:"img4.jpg",
-        about:"The story follows the life of David Copperfield from childhood to maturity. David was born in Blunderstone, Suffolk, England, six months after the death of his father. David spends his early years in relative happiness with his loving, childish mother and their kindly housekeeper, Clara Peggotty. They call him Davy. When he is seven years old his mother marries Edward Murdstone. To get him out of the way, David is sent to lodge with Peggotty's family in Yarmouth. Her brother, fisherman Mr Peggotty, lives in a beached barge, with his adopted niece and nephew Emily and Ham, and an elderly widow, Mrs Gummidge. Little Em'ly is somewhat spoiled by her fond foster father, and David is in love with her. They call him Master Copperfield.On his return, David is given good reason to dislike his stepfather, Murdstone, who believes exclusively in firmness. David has similar feelings for Murdstone's sister Jane, who moves into the house soon afterwards. Between them they tyrannise his poor mother, making her and David's lives miserable, and when, in consequence, David falls behind in his studies, Murdstone attempts to thrash him – partly to further pain his mother. David bites him and soon afterwards is sent away to Salem House, a boarding school, under a ruthless headmaster named Mr Creakle. There he befriends an older boy, James Steerforth, and Tommy Traddles. He develops an impassioned admiration for Steerforth, perceiving him as someone noble, who could do great things if he would, and one who pays attention to him.David goes home for the holidays to learn that his mother has given birth to a baby boy. Shortly after David returns to Salem House, his mother and her baby die, and David returns home immediately. Peggotty marries the local carrier, Mr Barkis. Murdstone sends David to work for a wine merchant in London – a business of which Murdstone is a joint owner. David's landlord, Wilkins Micawber, is arrested for debt and sent to the King's Bench Prison, where he remains for several months, before being released and moving to Plymouth. No one remains to care for David in London, so he decides to run away, with Micawber advising him to head to Dover, to find his only known remaining relative, his eccentric and kind-hearted great-aunt Betsey Trotwood. She had come to Blunderstone at his birth, only to depart in ire upon learning that he was not a girl. However, she takes it upon herself to raise David, despite Murdstone's attempt to regain custody of him. She encourages him to 'be as like his sister, Betsey Trotwood' as he can be – meeting the expectations she had for the girl who was never born. David's great-aunt renames him Trotwood Copperfield and addresses him as Trot, one of several names others call David in the novel."
-      },{
-          title:"Madame Bovary",
-          author:"Gustave Flaubert",
-          img:"img5.jpg",
-          about:"Madame Bovary takes place in provincial northern France, near the town of Rouen in Normandy. Charles Bovary is a shy, oddly dressed teenager arriving at a new school where his new classmates ridicule him. Charles struggles his way to a second-rate medical degree and becomes an Officier de santé in the Public Health Service. He marries the woman his mother has chosen for him, the unpleasant but supposedly rich widow Héloïse Dubuc. He sets out to build a practice in the village of Tôtes.One day, Charles visits a local farm to set the owner's broken leg and meets his patient's daughter, Emma Rouault. Emma is a beautiful, poetically dressed young woman who has received a good education in a convent. She has a powerful yearning for luxury and romance inspired by reading popular novels. Charles is immediately attracted to her, and visits his patient far more often than necessary, until Héloïse's jealousy puts a stop to the visits.When Héloïse unexpectedly dies, Charles waits a decent interval before courting Emma in earnest. Her father gives his consent, and Emma and Charles marry.The novel's focus shifts to Emma. Charles means well but is plodding and clumsy. After he and Emma attend an elegant ball given by the Marquis d'Andervilliers, Emma finds her married life dull and becomes listless. Charles decides his wife needs a change of scenery and moves his practice to the larger market town of Yonville (traditionally identified with the town of Ry). There, Emma gives birth to a daughter, Berthe, but motherhood proves a disappointment to Emma. She becomes infatuated with Léon Dupuis, an intelligent young man she meets in Yonville. Léon is a law student who shares Emma's appreciation for literature and music and returns her esteem. Concerned with maintaining her self-image as a devoted wife and mother, Emma does not acknowledge her passion for Léon and conceals her contempt for Charles, drawing comfort from the thought of her virtue. Léon despairs of gaining Emma's affection and departs for Paris to continue his studies."
-        }]
     
     booksRouter.get("/",function(req,res){
+      Bookdata.find()
+      .then(function(books){
         res.render("books",{
-              nav,
-              title:"Library",
-            books});
+          nav,
+          title:"Library",
+          button:"",
+         link:"" ,  
+        books});
+  });
       });
+        
       booksRouter.get("/:id",function(req,res){
-           const id= req.params.id
-             res.render("book",{
-              nav,
-              title:"Library",
-            book:books[id]
-             });
+        const id= req.params.id
+        Bookdata.findOne({_id:id})
+        .then(function(book){
+         res.render("book",{
+           nav,
+           title:"Library",
+         book
+         });
+        })
+      });       
+      booksRouter.get('/del/:id',function(req,res){
+        const id= req.params.id
+        Bookdata.remove({_id:id})
+        .then(function(){
+          res.redirect("/books")
+        })
       });
+
+      booksRouter.get('/update/:id',function(req,res){
+        const id= req.params.id
+        Bookdata.findOne({_id:id})
+        .then(function(book){
+         res.render("addbook",{
+           nav,
+           title:"Update Book",
+           act:"books/add/"+id,
+           button:"Update",
+         book
+       })
+          })
+      });
+
+      booksRouter.post('/add/:id',upload.single('image'),function(req,res){
+        const id= req.params.id
+        const item={
+          title: req.body.title,
+           author: req.body.author,
+           genre: req.body.genre,
+           about: req.body.about,
+           image:x
+          }
+          Bookdata.updateOne({_id:id},item).then(function(){
+            res.redirect("/books");
+          });
+
+      });
+
+      
 
       return booksRouter;
 }

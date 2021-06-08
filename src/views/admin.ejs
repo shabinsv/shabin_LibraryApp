@@ -23,13 +23,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#" class="navbar-brand"><%=title%></a>
+      <a href="/" class="navbar-brand">LogOut</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav nav2">
-        <%for(i=0;i<nav1.length;i++){%>
+        <%for(i=0;i<nav3.length;i++){%>
         <li>
-          <a href="<%=nav1[i].link%>"><%=nav1[i].name%></a>
+          <a href="<%=nav3[i].link%>"><%=nav3[i].name%></a>
         </li>
         <%}%>
       </ul>
@@ -46,36 +46,20 @@
     </nav>
   </div>
 </header>
-<!-- <img src="/img/<%=img%>" alt=""> -->
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-        <img src="/img/<%=img%>" class="d-block w-100 img1" alt="...">
-    </div>
-  </div>
-</div>
-<!-- 
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <ul class="list-inline">
-          <li><i class="icon-facebook icon-2x"></i></li>
-          <li><i class="icon-twitter icon-2x"></i></li>
-          <li><i class="icon-google-plus icon-2x"></i></li>
-          <li><i class="icon-pinterest icon-2x"></i></li>
-        </ul>
-        
-      </div>
-      <div class="col-sm-6">
-          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
-      </div>
-    </div>
-  </div>
-</footer> -->
-	<!-- script references -->
+<div class="list-group adminlink">
+  <a href="/addbook" class="list-group-item list-group-item-action list-group-item-success">ADD BOOK</a>
+  <a href="/admin/update" class="list-group-item list-group-item-action list-group-item-danger">UPDATE BOOK</a>
+  <a href="/admin/delete" class="list-group-item list-group-item-action list-group-item-warning">DELECT BOOK</a>
+  <a href="/addauthor" class="list-group-item list-group-item-action list-group-item-info">ADD AUTHOR</a>
+  <a href="/admin/authors/update" class="list-group-item list-group-item-action list-group-item-warning">UPDATE AUTHOR</a>
+  <a href="/admin/authors/delete" class="list-group-item list-group-item-action list-group-item-success">DELECT AUTHOR</a>
+</div>
+
+
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+    <script src="js/add.js"></script>
 	</body>
 </html>

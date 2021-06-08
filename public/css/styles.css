@@ -192,3 +192,51 @@ a,a:hover {
 .addform input{
   margin-bottom: 13px;
 }
+.adminlink{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.adminlink a{
+  font-weight: 900;
+  font-size: large;
+  padding: 2%;
+  background-color:white;
+
+}
+.delectbutton{
+  color: white;
+  background-color: red;
+  font-size:x-large;
+  font-weight: 600;
+  font-family: monospace;
+  border-radius: 3px;
+}
+.delectbutton:hover{
+  background-color:rgb(196, 75, 75);
+  color: white;
+}
+.formbutton{
+  border: 1px solid #5cb85c;
+  background-color: white;
+  color: #5cb85c;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 700;
+}
+.formbutton:hover{
+  background-color: #5cb85c;
+  color: white;
+
+}
+.loginalert{
+background-color: rgb(218, 67, 67);
+color: white;
+text-align: center;
+font-size: large;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}

@@ -7,7 +7,14 @@ function vali(){
         alert("cannot be empty");
         return false;
     }
+    else if(email.value=="admin@gmail.com"&&pwd.value=="Admin123"){
+        document.getElementById("adminlogin").action = "/admin";
+        document.getElementById("adminlogin").method = "GET";
+        return true;
+    }
     else if(regexp.test(email.value)&&decimal.test(pwd.value)){
+        document.getElementById("adminlogin").action = "/login/add";
+        document.getElementById("adminlogin").method = "POST";
         return true;
     }
     else{

@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-7">
-          <h1>Author Form
+          <h1><%=title%>
             <p class="lead"></p>
           </h1>
         </div>
@@ -60,18 +60,19 @@
 
                                     
 <div class="col col-sm-10 addform">                                                                              
-    <form action="/authors" onsubmit="return vali1()">
+    <form method="POST" action="/<%=act%>" enctype="multipart/form-data"  onsubmit="return vali1()">
       <div class="form-group">
         <label for="formGroupExampleInput">Author Name</label>
-        <input type="text" class="form-control" id="name1" placeholder="">
+        <input type="text" class="form-control" id="name1" name="title" value="<%=author.title%>">
       </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">About Author</label>
-            <textarea class="form-control" id="about1" rows="3"></textarea>
+            <input type="text" class="form-control" id="name1" name="about" value="<%=author.about%>">
           </div>
         <div class="form-group">
           <label for="inputAddress2">Image File</label>
-          <input type="file" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          <input type="file" class="form-control" id="inputAddress2" name="image">
+          
         </div>
           
          <button type="submit" class="btn btn-danger">Add Author</button>
